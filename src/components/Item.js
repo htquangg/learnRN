@@ -30,12 +30,12 @@ const Item = props => {
             alignItems: 'center',
             height: 200,
           }}>
-            <Animated.Text
-              style={{
-                transform: [{scale: scale}],
-                fontSize: 24,
-              }}>
-              {props.data.breed_group}
+          <Animated.Text
+            style={{
+              transform: [{scale: scale}],
+              fontSize: 24,
+            }}>
+            {props.data.breed_group}
           </Animated.Text>
           <Text h5>{props.data.origin}</Text>
         </View>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import Item from './Item';

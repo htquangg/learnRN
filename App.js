@@ -19,9 +19,16 @@ import 'react-native-gesture-handler';
 const App = () => {
   const [text, setText] = useState('');
   const [dogs, setDogs] = useState([]);
-  const onChangeText = val => {
+
+  const handleChangeText = useCallback(val => {
     setText(val);
-  };
+  }, []);
+
+  const handleSubmitEditing = useCallback(() => {
+    const tmpData = [...dogs];
+    const dataSearch = tmpData.filter(item => item.name.includes(text));
+    setDogs(dataSearch);
+  }, [text]);
 
   const getData = useCallback(async () => {
     const data = await fetchData();
@@ -29,8 +36,10 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    getData();
-  }, [getData]);
+    if (text.length === 0 && dogs.length === 0) {
+      getData();
+    }
+  }, [getData, text, dogs]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -40,8 +49,9 @@ const App = () => {
         <SearchBar
           lightTheme
           placeholder="Type here..."
-          onChangeText={onChangeText}
-          onSubmitEditing={() => console.log('okkkkk')}
+          onChangeText={handleChangeText}
+          onSubmitEditing={handleSubmitEditing}
+          onCancel={() => setText('')}
           value={text}
         />
         <ListItems data={dogs} />
