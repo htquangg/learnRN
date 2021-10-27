@@ -38,6 +38,7 @@ const Item = props => {
             {props.data.breed_group}
           </Animated.Text>
           <Text h5>{props.data.origin}</Text>
+          <Text h5>{props.data.bred_for}</Text>
         </View>
       </TouchableOpacity>
     );

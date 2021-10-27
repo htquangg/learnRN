@@ -10,7 +10,7 @@ import React, {useState, useEffect, useCallback} from 'react';
 import {StatusBar, StyleSheet, View} from 'react-native';
 
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {colors, SearchBar, Card, Text} from 'react-native-elements';
+import {colors, SearchBar, Icon} from 'react-native-elements';
 import Header from './src/components/Header';
 import {fetchData} from './src/services/fetchAPI';
 import ListItems from './src/components/ListItems';
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
   },
   body: {
+    flex: 1,
     marginTop: 10,
   },
 });
