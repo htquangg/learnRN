@@ -7,7 +7,7 @@
  */
 
 import React, {useState, useEffect, useCallback} from 'react';
-import {StatusBar, StyleSheet, View} from 'react-native';
+import {LogBox, StatusBar, StyleSheet, View} from 'react-native';
 
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {colors, SearchBar, Icon} from 'react-native-elements';
@@ -20,26 +20,28 @@ const App = () => {
   const [text, setText] = useState('');
   const [dogs, setDogs] = useState([]);
 
-  const handleChangeText = useCallback(val => {
+  const handleChangeText = val => {
     setText(val);
-  }, []);
+  };
 
-  const handleSubmitEditing = useCallback(() => {
+  const handleOnCancel = () => {
+    setText('');
+  };
+
+  const handleSubmitEditing = () => {
     const tmpData = [...dogs];
     const dataSearch = tmpData.filter(item => item.name.includes(text));
     setDogs(dataSearch);
-  }, [text]);
+  };
 
   const getData = useCallback(async () => {
     const data = await fetchData();
     setDogs(data);
-  }, []);
+  }, [text]);
 
   useEffect(() => {
-    if (text.length === 0 && dogs.length === 0) {
-      getData();
-    }
-  }, [getData, text, dogs]);
+    getData();
+  }, [getData]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -51,7 +53,7 @@ const App = () => {
           placeholder="Type here..."
           onChangeText={handleChangeText}
           onSubmitEditing={handleSubmitEditing}
-          onCancel={() => setText('')}
+          onCancel={handleOnCancel}
           value={text}
         />
         <ListItems data={dogs} />

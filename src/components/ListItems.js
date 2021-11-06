@@ -22,7 +22,7 @@ const ListItems = props => {
   const onScrollHandler = event => {
     setContentVerticalOffset(event.nativeEvent.contentOffset.y);
   };
-
+  console.log(props.data.length);
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
