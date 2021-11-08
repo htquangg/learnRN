@@ -1,7 +1,9 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import {Header, Text} from 'react-native-elements';
 import PropTypes from 'prop-types';
+
+import styles from './styles';
 
 const CustomHeader = props => {
   const centerComponent = () => {
@@ -28,12 +30,5 @@ PropTypes.defaultProps = {
 PropTypes.propTypes = {
   text: PropTypes.string,
 };
-
-const styles = StyleSheet.create({
-  header: {
-    fontWeight: '600',
-    textTransform: 'uppercase',
-  },
-});
 
 export default React.memo(CustomHeader);

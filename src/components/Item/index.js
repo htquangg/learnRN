@@ -1,15 +1,10 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Image,
-  Animated,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Image, Animated, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {Swipeable} from 'react-native-gesture-handler';
-
 import {Card, Text} from 'react-native-elements';
+
+import styles from './styles';
 
 const Item = props => {
   const rightSwipeActions = (progress, dragX) => {
@@ -62,19 +57,6 @@ const Item = props => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-  },
-  image: {
-    width: '100%',
-    height: 200,
-  },
-  rightSwipeContainer: {
-    flex: 1,
-  },
-});
 
 Item.defaultProp = {
   data: {},
