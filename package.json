@@ -8,7 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "format": "prettier --write **/*.js"
+    "format": "prettier --write **/**/*.js **/**/**/*.js"
   },
   "dependencies": {
     "@react-navigation/drawer": "^6.1.8",

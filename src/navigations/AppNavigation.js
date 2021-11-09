@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import DrawerContainer from '../screens/DrawerContainer';
 import DogScreen from '../screens/DogApp';
+import DiaryScreen from '../screens/Diary';
 
 const Stack = createStackNavigator();
 
@@ -18,11 +19,12 @@ function MainNavigator() {
           paddingBottom: 'auto',
         },
         headerTitleStyle: {
-          alignSelf: 'center'
-        }
-      }}>
+          alignSelf: 'center',
+        },
+      }}
+    >
       <Stack.Screen name="Dog" component={DogScreen} />
-      {/* <Stack.Screen name="Diary" component={DiaryScreen} /> */}
+      <Stack.Screen name="Diary" component={DiaryScreen} />
     </Stack.Navigator>
   );
 }
@@ -40,7 +42,8 @@ function DrawerStack() {
       screenOptions={{headerShown: false}}
       drawerContent={({navigation}) => (
         <DrawerContainer navigation={navigation} />
-      )}>
+      )}
+    >
       <Drawer.Screen name="Main" component={MainNavigator} />
     </Drawer.Navigator>
   );

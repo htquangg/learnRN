@@ -18,18 +18,21 @@ const Item = props => {
       <TouchableOpacity
         style={styles.rightSwipeContainer}
         activeOpacity={0.6}
-        onPress={() => {}}>
+        onPress={() => {}}
+      >
         <View
           style={{
             justifyContent: 'flex-start',
             alignItems: 'center',
             height: 200,
-          }}>
+          }}
+        >
           <Animated.Text
             style={{
               transform: [{scale: scale}],
               fontSize: 24,
-            }}>
+            }}
+          >
             {props.data.breed_group}
           </Animated.Text>
           <Text h5>{props.data.origin}</Text>

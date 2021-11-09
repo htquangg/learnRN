@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors} from 'react-native-elements'
+import {colors} from 'react-native-elements';
 
 const styles = StyleSheet.create({
   content: {
@@ -14,10 +14,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   titleButton: {
-    color:  colors.black,
-    marginLeft: 8
-  }
-
+    color: colors.black,
+    marginLeft: 8,
+  },
 });
 
 export default styles;
