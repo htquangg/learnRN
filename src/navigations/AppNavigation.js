@@ -5,6 +5,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import DrawerContainer from '../screens/DrawerContainer';
 import DogScreen from '../screens/DogApp';
 import DiaryScreen from '../screens/Diary';
+import DiaryDetailSreen from '../screens/DiaryDetail';
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ function MainNavigator() {
     >
       <Stack.Screen name="Dog" component={DogScreen} />
       <Stack.Screen name="Diary" component={DiaryScreen} />
+      <Stack.Screen name="DiaryDetail" component={DiaryDetailSreen} />
     </Stack.Navigator>
   );
 }

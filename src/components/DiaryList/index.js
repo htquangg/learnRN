@@ -17,9 +17,6 @@ const DiaryList = props => {
         keyExtractor={diary => diary.id}
         style={styles.body}
       />
-      {/* <DiaryItem /> */}
-      {/* <DiaryItem /> */}
-      {/* <DiaryItem /> */}
     </View>
   );
 };

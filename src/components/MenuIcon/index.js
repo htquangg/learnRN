@@ -9,7 +9,7 @@ const MenuIcon = props => {
     <Pressable onPress={props.onPress} style={styles.headerButtonContainer}>
       <Icon
         type="ionicon"
-        name="menu-outline"
+        name={props.name || 'menu-outline'}
         containerStyle={styles.headerButtonIcon}
         size={32}
       />
@@ -19,6 +19,7 @@ const MenuIcon = props => {
 
 MenuIcon.propTypes = {
   onPress: PropTypes.func,
+  name: PropTypes.string,
 };
 
 export default MenuIcon;

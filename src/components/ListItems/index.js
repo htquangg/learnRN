@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {FlatList} from 'react-native';
 import PropTypes from 'prop-types';
 import Item from '../Item';
 import {Icon, colors} from 'react-native-elements';
@@ -36,11 +36,10 @@ const ListItems = props => {
 
       {contentVerticalOffset > 300 && (
         <Icon
-          name="north"
-          type="material"
+          name="arrow-up-outline"
+          type="ionicon"
           raised
           reverse
-          color={colors.primary}
           containerStyle={styles.scrollTopButton}
           onPress={scrollTopHandler}
         />

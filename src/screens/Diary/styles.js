@@ -5,6 +5,11 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 10,
   },
+  plusButton: {
+    position: 'absolute',
+    bottom: 16,
+    right: 10,
+  },
 });
 
 export default styles;

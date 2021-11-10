@@ -1,34 +1,32 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
+import {Icon} from 'react-native-elements';
 import MenuIcon from '../../components/MenuIcon';
 import styles from './styles';
 import DiaryList from '../../components/DiaryList';
+import {database} from '../../firebase';
 
 const DiaryScreen = props => {
+  const [data, setData] = useState([]);
   const {navigation} = props;
 
-  const data = [
-    {
-      id: 1,
-      title: 'text1',
-      content: 'text111',
-    },
-    {
-      id: 2,
-      title: 'text2',
-      content: 'text111',
-    },
-    {
-      id: 3,
-      title: 'text3',
-      content: 'text111',
-    },
-    {
-      id: 4,
-      title: 'text4',
-      content: 'text111',
-    },
-  ];
+  useEffect(() => {
+    // const diaries = database.ref('/diary').orderByValue().once('value');
+    database
+      .ref('/diary/')
+      .once('value')
+      .then(snapshot => {
+        if (snapshot.exists()) {
+          let diaries = [];
+          for (let diary of Object.values(snapshot.val())) {
+            diaries.push(diary);
+          }
+          diaries.sort((a, b) => b.createAt - a.createAt);
+          setData(diaries);
+        }
+        // console.log(snapshot.val());
+      });
+  });
 
   useEffect(() => {
     navigation.setOptions({
@@ -49,9 +47,21 @@ const DiaryScreen = props => {
     });
   }, []);
 
+  const handleOnPress = () => {
+    // TODO
+    navigation.navigate('DiaryDetail');
+  };
+
   return (
     <View style={styles.container}>
       <DiaryList data={data} />
+      <Icon
+        type="ionicon"
+        name="add-circle-sharp"
+        size={56}
+        containerStyle={styles.plusButton}
+        onPress={handleOnPress}
+      />
     </View>
   );
 };
