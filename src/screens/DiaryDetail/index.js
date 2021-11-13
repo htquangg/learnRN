@@ -9,7 +9,7 @@ import {generatedId} from '../../helpers';
 import styles from './styles';
 
 const DiaryDetailSreen = props => {
-  const {navigation} = props;
+  const {navigation, route} = props;
 
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -26,6 +26,7 @@ const DiaryDetailSreen = props => {
         <MenuIcon
           name="arrow-back-outline"
           onPress={() => {
+            route.params.onGoBack(false);
             navigation.goBack();
           }}
         />
@@ -65,6 +66,7 @@ const DiaryDetailSreen = props => {
       .child(data.id)
       .set(data)
       .then(() => {
+        route.params.onGoBack(true);
         navigation.goBack();
         Toast.show({
           type: 'success',
