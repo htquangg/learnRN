@@ -26,7 +26,7 @@ export default function DrawerContainer(props) {
           icon={<Icon type="ionicon" name="receipt-outline" />}
           titleStyle={styles.titleButton}
           onPress={() => {
-            navigation.navigate('Diary');
+            navigation.navigate('Main');
             navigation.closeDrawer();
           }}
         />

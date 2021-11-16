@@ -5,8 +5,13 @@ import DiaryItem from '../DiaryItem';
 import styles from './styles';
 
 const DiaryList = props => {
-  const renderDiary = ({item}) => {
-    return <DiaryItem data={item} />;
+  const renderDiary = ({item, index}) => {
+    return (
+      <DiaryItem
+        data={item}
+        onPressDelete={() => props.onPressDelete(item, index)}
+      />
+    );
   };
 
   return (

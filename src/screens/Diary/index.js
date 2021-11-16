@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {View} from 'react-native';
 import {Icon} from 'react-native-elements';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -10,8 +10,30 @@ import {DIARY_DATA} from '../../constants';
 
 const DiaryScreen = props => {
   const [data, setData] = useState([]);
+  const [isFetch, setIsFetch] = useState({
+    loading: false
+  })
 
-  const {navigation} = props;
+
+  const {navigation, route} = props;
+
+  const onGoBack = async val => {
+    if (val) {
+      const data = await getData(true);
+      if (data) {
+        setData(data);
+        setIsFetch(prev => {...prev})
+      }
+    }
+  };
+
+  if(route.params && route.params.isFetch){
+    const val = route.params.isFetch
+    console.log(isFetch)
+    if(val && isFetch.loading === false){
+    onGoBack(val);
+    }
+  }
 
   useEffect(() => {
     navigation.setOptions({
@@ -74,14 +96,14 @@ const DiaryScreen = props => {
     };
   }, []);
 
-  const onGoBack = async val => {
-    if (val) {
-      const data = await getData(true);
-      if (data) {
-        setData(data);
-      }
-    }
-  };
+  // const onGoBack = async val => {
+  //   if (val) {
+  //     const data = await getData(true);
+  //     if (data) {
+  //       setData(data);
+  //     }
+  //   }
+  // };
 
   const handleOnPress = () => {
     navigation.navigate('DiaryDetail', {
@@ -89,9 +111,23 @@ const DiaryScreen = props => {
     });
   };
 
+  const handleOnPressDelete = async (item, index) => {
+    try {
+      const diariesLocal = await AsyncStorage.getItem(DIARY_DATA);
+      const diariesLocalParse = JSON.parse(diariesLocal);
+
+      diariesLocalParse.splice(index, 1);
+
+      await database.ref('/diary').child(item.id).remove();
+      await AsyncStorage.setItem(DIARY_DATA, JSON.stringify(diariesLocalParse));
+
+      setData(diariesLocalParse);
+    } catch (e) {}
+  };
+
   return (
     <View style={styles.container}>
-      <DiaryList data={data} />
+      <DiaryList data={data} onPressDelete={handleOnPressDelete} />
       <Icon
         type="ionicon"
         name="add-circle-sharp"

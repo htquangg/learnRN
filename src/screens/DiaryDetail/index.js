@@ -26,7 +26,10 @@ const DiaryDetailSreen = props => {
         <MenuIcon
           name="arrow-back-outline"
           onPress={() => {
-            route.params.onGoBack(false);
+            console.log(route)
+            if(route.params){
+              route.params.onGoBack(false);
+            }
             navigation.goBack();
           }}
         />
@@ -66,8 +69,15 @@ const DiaryDetailSreen = props => {
       .child(data.id)
       .set(data)
       .then(() => {
+        if(route.params){
         route.params.onGoBack(true);
         navigation.goBack();
+        }else{
+          console.log(navigation)
+          navigation.navigate('Diary', {
+            isFetch: true, 
+          })
+        }
         Toast.show({
           type: 'success',
           text1: 'Success',

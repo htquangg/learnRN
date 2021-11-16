@@ -31,6 +31,21 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
   },
+  rightSwipeContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.black,
+    borderRadius: 5,
+  },
+  rightSwipeBody: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  rightSwipeText: {
+    fontSize: 24,
+    color: colors.white,
+  },
 });
 
 export default styles;

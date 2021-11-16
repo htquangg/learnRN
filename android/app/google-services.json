@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "661758011658",
+    "firebase_url": "https://diaryschool-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "diaryschool",
+    "storage_bucket": "diaryschool.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661758011658:android:5480e55a56bbf663bc72f3",
+        "android_client_info": {
+          "package_name": "com.demo3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661758011658-ldhobi29a1t6dilo0nu3ktdeqsamdcpd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwJNzMZbgEgq-05jpr-IimYmdfCleeuKk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661758011658-ldhobi29a1t6dilo0nu3ktdeqsamdcpd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "661758011658-ker8c4v49i2gito87glf4lle3c5pngut.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.demo3"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
